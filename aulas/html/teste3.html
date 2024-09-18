@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bold{
+            font-weight: 600;
+            color: rgb(65, 6, 6);
+            background-color: crimson;
+            
+        }
+
+        .italic {
+            font-style: italic;
+            color: rgb(34, 83, 99);
+            background-color: aqua;
+            
+        }
+
+        .normal {
+            font-style: normal;
+            color: darkgreen;
+            background-color: lightgreen;
+            
+        }
+    </style>
+</head>
+<body>
+        <!-- //------------- manipulando style javascript ----------->
+
+    <h2 align="center" >Separando string e numero</h2>
+    <label for="text">Texto: </label>
+    <input type="text" placeholder="Digite um caracter" name="text" id="text" onkeyup="caracter()">
+    <hr>
+   <label for="letra"> Letras: </label>
+    <input type="text" disabled name="letra" id="letra">   
+    <input type="reset" onclick="clearCamp('letra')" name="clear" id="clear" value="Clear">
+
+    <hr>
+   <label for="numero"> Numeros :</label>
+    <input type="text" disabled name="numero" id="numero">  
+    <input type="reset" onclick="clearCamp('numero')" name="clear" id="clear" value='Clear'> 
+
+    <hr>
+    <button type="button" onclick="mudarCor(this.value, '200px', '100px')" value="red" id="btnCor">red</button>
+    <button type="button" onclick="mudarCor(this.value, '150px', '300px')" value="blue" id="btnCor">blue</button>
+    <button type="button" onclick="mudarCor(this.value, '220px', '100px')" value="green" id="btnCor">green</button>
+    <div id="divCor" style="border: 3px solid black;width: 150px; height: 150px; background: gray; margin-top: 20px;"></div>
+    <hr>
+    <!-- //------------- manipulando class javascript ----------->
+    <button type="button" onclick="fontDecoratio(this.value)" value="bold">Bold</button>
+    <button type="button" onclick="fontDecoratio(this.value)" value="italic">Italic</button>
+    <button type="button" onclick="fontDecoratio(this.value)" value="normal">nomal</button>
+    <h3 id="h3" class="">Fernando</h3>
+</body>
+<script src="../javascript/teste3.js"></script>
+</html>

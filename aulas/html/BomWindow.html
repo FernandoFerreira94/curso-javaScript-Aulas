@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+//------------------- widonw open close ----------------------
+        var janela 
+        function openPopUp() { // window.open() aguarda 4 parametros ('url','nome','propriedade largura e altura')
+            janela = window.open('./Loop.html')
+        }
+
+        function closePopUp() {
+            janela.close() // window.close precisa de uma referenca para saber qual tela ira fechar
+        }
+
+// -------------------- widonw screen ----------
+       var height =  window.screen.availHeight // retorna altura maxima da janela
+       var width =  window.screen.availWidth // retorna largura maxima da janela
+       var largura =  window.screen.width // retorna largura maxima da janela
+       var altura =  window.screen.height // retorna largura maxima da janela
+function pixNavegador() {
+    document.getElementById('texto').innerHTML = (`altura do navegador é: ${height} e a largura do navegador é: ${width}`)
+    document.getElementById('texto1 ').innerHTML = (`altura do navegador é: ${altura} e a largura do navegador é: ${largura}`)
+}
+
+//---------------------- widonw location ---------------------------
+
+function redirecionamento(site) {
+    window.location.href = 'http://www.'+site+'.com' // força um redirecionamento para pagina
+}
+
+function refresh() {
+    window.location.reload() // refresh a pagina (F5) fica ativo direto se nao colocar em um button ou funçao
+    
+}
+
+//--------------------- window Timing -------------
+
+//setTimeout('acao','tempo em millisegundos') executa apenas um vez apos tempo informado
+function timeOut() {
+    setTimeout(()=> {
+        document.getElementById('time1').innerHTML = 'Apenas uma vez'
+    }, 1000);   
+}
+
+//setInterval('acao','tempo em millsegundos') sempre executa a acao apos o tempo informado
+var res = 1
+function interval(  ) {    
+    var x = setInterval(()=>{   
+        document.getElementById('time2').innerHTML += '-'+res;
+        res ++
+        if (res >= 5) {
+           clearInterval(x) // função de parada do setInterval() precisa passar uma variavel do serInterval
+        }
+    },1000);
+        
+}
+    </script>
+</head>
+<body>
+    <button type="button" onclick="openPopUp()">Open</button>
+    <button type="button" onclick="closePopUp()">Close</button> 
+    <button type="button" onclick="window.print()">print</button> <!-- função tirar print da pagina (nao e necessaria criar uma funçao)-->
+    <button type="button" onclick="pixNavegador()">pix Navegador</button> <!-- função tirar print da pagina (nao e necessaria criar uma funçao)-->
+    <hr>
+    <p id="texto"></p>
+    <p id="texto1"></p>
+    <hr>
+    <button type="button" onclick="redirecionamento('google')">google</button>
+    <button type="button" onclick="redirecionamento('youtube')">youtube</button>
+    <button type="button" onclick="window.location.reload()">F5</button> 
+<hr>
+<button type="button" onclick="timeOut()">uma vez</button>
+<p id="time1"></p>
+<button type="button" onclick="interval()">varias vezes</button>
+<p id="time2"></p>
+<hr>
+</body>
+</html>

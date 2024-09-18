@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTE 2</title>
+</head>
+
+<body>
+    <div class="clima">
+        <h5>clima de hoje</h5>
+        <input type="text" id="idClima" max="3" min="1">
+        <button onclick="exibirArtigo(idClima.value, daySunny, dayRaining)">enter</button>
+        <p id="text"></p>
+    </div>
+
+    <div class="data">
+        <h5>data</h5>
+        <p id="data"></p>
+        <h5>Horario</h5>
+        <p id="horario"></p>
+    </div>
+
+    <div class="compararData">
+        <h5>Data inicial</h5>
+        <p id="dataInicial"></p>
+        <h5>Data atual</h5>
+        <p id="dataAtual"></p>
+        <h5>Diferença de datas</h5>
+        <p id="dateFinal"></p>
+    </div>
+
+    <div class="mouse">
+        <div onclick="mouse1()" ondblclick="mouse2()" onmouseover="mouse3()" onmouseout="mouse4()" id="div"
+            style="background: #ccc; height: 150px; width: 150px;"></div>
+    </div>
+    <hr>
+    <div class="teclado">
+        <div id="div1" style="background-color: aquamarine; height: 150px; width: 150px; margin-top: 20px;"></div>
+        <input onkeydown="teclado1()" onkeypress="teclado2()" onkeyup="teclado3()" type="text">
+    </div>
+</body>
+<script src="../javascript/teste2.js"></script>
+
+</html>

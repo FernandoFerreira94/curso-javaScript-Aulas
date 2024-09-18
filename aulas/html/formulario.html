@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="formulario"> <!--facilitar a busca do goole com content-->
+    <meta name="author" content="Fernando Ferreia"> <!-- nome de quem fez o site-->
+    <meta name="keywords" content="formulario de cadastro"> <!--explicaçao de como o google vai ti procurar-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução de eventos</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background-color: #272a37;
+            font-family: Arial, Helvetica, sans-serif;
+            background: url(../Captura\ de\ tela\ 2024-09-09\ 212222.png);
+            background-position: center;
+            background-size: 100%;
+        }
+
+        form {
+            width: 100%;
+            max-width: 30rem;
+            border: 3px solid white;
+            padding: 60px;
+            backdrop-filter: blur(5px);
+            /* ofusca o background */
+        }
+
+        label,
+        input,
+        textarea {
+            display: block;
+            color: white;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            font: inherit;
+            padding: 10px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: #323644;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        #btn {
+            color: black;
+            background: #ccc;
+            border: 0.5px solid transparent;
+            border-radius: 50px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        #btn:hover {
+            border-color: white;
+            box-shadow: 0 0 5px 2px white;
+        }
+
+        input:hover,
+        input:focus,
+        textarea:hover,
+        textarea:focus {
+            outline: none;
+            /* remove borda do elemente em focus */
+            border-color: #1d90f5;
+            box-shadow: 0 0 10px 5px #304d7d;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            /* scrool de rolage apenas na vertical */
+            font-weight: 400;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: black;
+            font-size: 35px;
+            font-weight: 800;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <form action="../site/index.html" method="post">
+            <h2>Formulario</h2>
+
+            <label for="idNome">Nome:</label>
+            <input type="text" name="idNome" required id="idNome" placeholder="Digite seu nome:">
+            <!--required informa ao usuario que precisa preencher o campo antes de ser enviado-->
+            <label for="idEmail">Email:</label>
+            <input type="email" name="idEmail" id="idEmail" required placeholder="digite seu email">
+            <div>
+                <label for="idText">Mensagem:</label>
+                <textarea name="idText" id="idText" placeholder="Digite um texto"></textarea>
+            </div>
+            <input id="btn" type="submit" value="Enviar">
+            <input id="btn" type="reset" value="limpar">
+
+        </form>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
