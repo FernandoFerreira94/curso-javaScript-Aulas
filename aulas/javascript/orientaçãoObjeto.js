@@ -335,7 +335,6 @@ produtoLiteral.verDercricao();
 
 // ---- dados html
 let nome = document.getElementById("nome").innerHTML;
-let idade = document.getElementById("idade").innerHTML;
 let sexo = document.getElementById("sexo").innerHTML;
 let job = document.getElementById("job").innerHTML;
 let p = document.getElementById("resumo");
@@ -343,7 +342,7 @@ let p = document.getElementById("resumo");
 // ---- objeto literal
 let formulario = {
   nome: nome, // nao tem necessidade de colocar nome: valor
-  idade,
+  idade: document.getElementById("idade").innerHTML, // pdoemos atribuir direto o valor do ID HTML
   sexo,
   job,
 
@@ -354,3 +353,133 @@ let formulario = {
 
 console.log(formulario.exibirResumo());
 p.innerHTML = formulario.exibirResumo();
+console.log(formulario.idade);
+
+// --------- modificando valores do objeto -----
+
+let pessoa = {
+  nome: "jose",
+  idade: 45,
+};
+
+console.table(pessoa);
+pessoa.nome = "Marcos"; // modificando valores do objeto
+pessoa.idade = 87;
+pessoa.sexo = "Masculino"; // acrecentando indice e valor no objeto
+pessoa.apresentar = () =>
+  // acrecentando uma função no objeto
+  console.log(
+    // necessario indicar o objeto.indice para acessar valores quando for criar uma função fora do objeto
+    `I'm ${pessoa.nome}, have ${pessoa.idade} old and am ${pessoa.sexo},`
+  );
+
+pessoa.apresentar(); // chamando função criada fora do objeto
+console.table(pessoa);
+let k = pessoa; // variavel K vai ser referencia a variavel pessoa
+console.table(k.idade);
+console.table(pessoa.idade);
+
+// ----------- objeto função contrutor -------
+
+// objeto usando metodo get e set
+let Carro1 = function () {
+  this.cor = "yellow";
+  this.modelo = "chevette";
+  this.velocidadeAtua = 0;
+  this.velocidadeMaxima = 120;
+
+  this.acelerar = function () {
+    let velocidade = this.getVelocidadeAtual() + 10;
+    this.setVelocidadeAtual(velocidade);
+  };
+
+  this.getVelocidadeAtual = function () {
+    return this.velocidadeAtua;
+  };
+
+  this.setVelocidadeAtual = function (velocidadeAtual) {
+    this.velocidadeAtua = velocidadeAtual;
+  };
+};
+let carro1 = new Carro1();
+console.log(`velocidade atual é ${carro1.getVelocidadeAtual()}`);
+carro1.acelerar();
+console.log(`velocidade atual é ${carro1.getVelocidadeAtual()}`);
+
+// objeto sem usar metodo get e set
+let Carro2 = function () {
+  this.cor = "yellow";
+  this.modelo = "chevette";
+  this.velocidadeAtua = 0;
+  this.velocidadeMaxima = 120;
+
+  // metodos - função
+  this.acelerar = function () {
+    for (this.velocidadeAtua; this.velocidadeAtua < this.velocidadeMaxima; ) {
+      this.velocidadeAtua += 30;
+      console.log(this.velocidadeAtua);
+    }
+    if (this.velocidadeAtua === this.velocidadeMaxima) {
+      console.log("velocidade maxima");
+    }
+  };
+};
+
+let carro2 = new Carro2();
+carro2.acelerar();
+
+// objeto literal
+
+let carro3 = {
+  cor: "Yellow",
+  modelo: "Chevette",
+  velocidadeAtua: 0,
+  velocidadeMaxima: 120,
+  acelerar: function () {
+    if (this.velocidadeAtua < this.velocidadeMaxima) {
+      // codigo so vai rodar ser velocidade atual for menor que maxima
+      while (this.velocidadeAtua < this.velocidadeMaxima) {
+        // função de acelerar
+        this.velocidadeAtua += 35; // aceleração em 10 em 10
+        if (this.velocidadeAtua > this.velocidadeMaxima) {
+          // função para nao deixar velocidade passar da maxima
+          this.velocidadeAtua = this.velocidadeMaxima; // atribuindo velocidade atual a maxima
+        }
+        console.log(`velocidade atual é ${this.velocidadeAtua}`); // contabilizando veloidade do carro
+        if (this.velocidadeAtua === this.velocidadeMaxima) {
+          console.log("velocidade maxima chevette"); // msg avisando quando velocidade chegar ao maximo
+        }
+      }
+    } else {
+      console.log("algo de errado no carro"); // caso algo de errado msg ira alertar
+    }
+  },
+};
+
+carro3.acelerar();
+
+// ----- objeto função construtor protegendo dados ---
+
+let Carro4 = function () {
+  this.cor = "yellow";
+  this.modelo = "chevette";
+  let velocidadeAtua = 0;
+  const velocidadeMaxima = 120;
+
+  this.acelerar = function () {
+    let velocidade = this.getVelocidadeAtual() + 10;
+    this.setVelocidadeAtual(velocidade);
+  };
+
+  this.getVelocidadeAtual = function () {
+    return velocidadeAtua;
+  };
+
+  this.setVelocidadeAtual = function (atual) {
+    velocidadeAtua = atual;
+  };
+};
+let carro4 = new Carro4();
+console.log(`velocidade atual é ${carro4.getVelocidadeAtual()}`);
+carro4.acelerar();
+console.log(`velocidade atual é ${carro4.getVelocidadeAtual()}`);
